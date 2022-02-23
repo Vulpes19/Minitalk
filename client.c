@@ -6,7 +6,7 @@
 /*   By: abaioumy <abaioumy@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/20 18:45:46 by abaioumy          #+#    #+#             */
-/*   Updated: 2022/02/20 21:32:48 by abaioumy         ###   ########.fr       */
+/*   Updated: 2022/02/23 15:01:07 by abaioumy         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,14 +14,12 @@
 
 int	main(int ac, char **av)
 {
-	int	nbr;
-	int	bn;
+	int	pid;
 
+	pid = ft_atoi(av[1]);
 	if (ac == 3)
 	{
-		nbr = ft_atoi(av[2]);
-		bn = ft_convert_to_binary(nbr);
-		ft_printf("%d\n", bn);
+		ft_convert_to_binary(av[2], pid);
 	}
 	return (0);
 }

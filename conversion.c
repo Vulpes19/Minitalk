@@ -6,11 +6,21 @@
 /*   By: abaioumy <abaioumy@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/20 21:14:16 by abaioumy          #+#    #+#             */
-/*   Updated: 2022/02/20 21:34:01 by abaioumy         ###   ########.fr       */
+/*   Updated: 2022/02/23 15:04:20 by abaioumy         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "minitalk.h"
+
+int	ft_strlen(char *s)
+{
+	int	i;
+
+	i = 0;
+	while (s[i])
+		i++;
+	return (i);
+}
 
 int	ft_isdigit(int c)
 {
@@ -20,32 +30,26 @@ int	ft_isdigit(int c)
 		return (0);
 }
 
-int	ft_convert_to_binary(int nbr)
+void	ft_convert_to_binary(char *str, int pid)
 {
-	int	*binary;
-	int	*result;
-	int	i;
-	int	j;
+	int		shift;
+	int		i;
 
 	i = 0;
-	j = 0;
-	binary = NULL;
-	result = NULL;
-	while (nbr / 2)
+	shift = 0;
+	while (str[i])
 	{
-		binary[i] = nbr % 2;
-		nbr /= 2;
+		while (shift < 8)
+		{
+			if (str[i] & 128 >> shift)
+				kill(pid, SIGUSR1);
+			else
+				kill(pid, SIGUSR2);
+			shift++;
+			usleep(3);
+		}
 		i++;
 	}
-	while (i > 0)
-	{
-		result[j] = binary[i];
-		i--;
-		j++;
-	}
-	exit(0);
-	j = *result;
-	return (j);
 }
 
 int	ft_atoi(char *str)

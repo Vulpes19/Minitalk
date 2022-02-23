@@ -6,7 +6,7 @@
 /*   By: abaioumy <abaioumy@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/20 18:30:51 by abaioumy          #+#    #+#             */
-/*   Updated: 2022/02/20 21:30:56 by abaioumy         ###   ########.fr       */
+/*   Updated: 2022/02/23 14:55:46 by abaioumy         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,8 +18,9 @@
 # include <signal.h>
 # include <stdlib.h> 
 
-int	ft_atoi(char *str);
-int	ft_isdigit(int c);
-int	ft_convert_to_binary(int nbr);
+int		ft_atoi(char *str);
+int		ft_isdigit(int c);
+void	ft_convert_to_binary(char *s, int pid);
+int		ft_strlen(char *s);
 
 #endif
