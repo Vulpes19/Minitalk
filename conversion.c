@@ -6,7 +6,7 @@
 /*   By: abaioumy <abaioumy@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/20 21:14:16 by abaioumy          #+#    #+#             */
-/*   Updated: 2022/02/23 15:04:20 by abaioumy         ###   ########.fr       */
+/*   Updated: 2022/02/27 17:55:51 by abaioumy         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,10 +41,16 @@ void	ft_convert_to_binary(char *str, int pid)
 	{
 		while (shift < 8)
 		{
-			if (str[i] & 128 >> shift)
-				kill(pid, SIGUSR1);
+			if (str[i] & (0x80 >> shift))
+			{
+				if (kill(pid, SIGUSR2) == -1)
+					exit(1);
+			}
 			else
-				kill(pid, SIGUSR2);
+			{
+				if (kill(pid, SIGUSR1) == -1)
+					exit(1);
+			}
 			shift++;
 			usleep(3);
 		}
@@ -74,9 +80,9 @@ int	ft_atoi(char *str)
 		result = (result * 10) + str[i] - 48;
 		i++;
 	}
-	if (result >= (unsigned long long)9223372036854775807 + 1 && sign == -1)
-		return (0);
-	if (result > 9223372036854775807 && sign == 1)
-		return (-1);
+	// if (result >= (unsigned long long)9223372036854775807 + 1 && sign == -1)
+	// 	return (0);
+	// if (result > 9223372036854775807 && sign == 1)
+	// 	return (-1);
 	return (result * sign);
 }

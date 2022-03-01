@@ -6,7 +6,7 @@
 /*   By: abaioumy <abaioumy@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/20 18:45:46 by abaioumy          #+#    #+#             */
-/*   Updated: 2022/02/23 15:01:07 by abaioumy         ###   ########.fr       */
+/*   Updated: 2022/02/28 12:01:33 by abaioumy         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,9 +17,10 @@ int	main(int ac, char **av)
 	int	pid;
 
 	pid = ft_atoi(av[1]);
-	if (ac == 3)
+	if (ac != 3)
 	{
-		ft_convert_to_binary(av[2], pid);
+		return (0);
 	}
+	ft_convert_to_binary(av[2], pid);
 	return (0);
 }
