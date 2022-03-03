@@ -18,7 +18,7 @@ all: $(SERVER) $(CLIENT)
 	cc -c $(CFLAGS) -o $@ $< -g
 
 $(SERVER): $(LIBPRINTF) $(HEADER)
-	cc $(LIBPRINTF) $(SRVSRC) -o $(SERVER)
+	cc $(CFLAGS) $(LIBPRINTF) $(SRVSRC) -o $(SERVER)
 
 $(CLIENT): $(LIBPRINTF) $(CLOBJS) $(HEADER)
 	cc $(CFLAGS) $(LIBPRINTF) $(CLOBJS) $(CLMAIN) -o $(CLIENT)

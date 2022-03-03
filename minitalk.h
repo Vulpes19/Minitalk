@@ -6,7 +6,7 @@
 /*   By: abaioumy <abaioumy@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/20 18:30:51 by abaioumy          #+#    #+#             */
-/*   Updated: 2022/02/23 14:55:46 by abaioumy         ###   ########.fr       */
+/*   Updated: 2022/03/03 13:56:40 by abaioumy         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,7 +20,7 @@
 
 int		ft_atoi(char *str);
 int		ft_isdigit(int c);
-void	ft_convert_to_binary(char *s, int pid);
+void	ft_convert_to_binary(char c, int pid);
 int		ft_strlen(char *s);
 
 #endif

@@ -6,7 +6,7 @@
 /*   By: abaioumy <abaioumy@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/20 21:14:16 by abaioumy          #+#    #+#             */
-/*   Updated: 2022/02/27 17:55:51 by abaioumy         ###   ########.fr       */
+/*   Updated: 2022/03/03 14:22:39 by abaioumy         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,31 +30,25 @@ int	ft_isdigit(int c)
 		return (0);
 }
 
-void	ft_convert_to_binary(char *str, int pid)
+void	ft_convert_to_binary(char c, int pid)
 {
 	int		shift;
-	int		i;
 
-	i = 0;
 	shift = 0;
-	while (str[i])
+	while (shift < 8)
 	{
-		while (shift < 8)
+		if (c & (0x80 >> shift))
 		{
-			if (str[i] & (0x80 >> shift))
-			{
-				if (kill(pid, SIGUSR2) == -1)
-					exit(1);
-			}
-			else
-			{
-				if (kill(pid, SIGUSR1) == -1)
-					exit(1);
-			}
-			shift++;
-			usleep(3);
+			if (kill(pid, SIGUSR2) == -1)
+				exit(1);
 		}
-		i++;
+		else
+		{
+			if (kill(pid, SIGUSR1) == -1)
+				exit(1);
+		}
+		shift++;
+		usleep(100);
 	}
 }
 
