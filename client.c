@@ -6,7 +6,7 @@
 /*   By: abaioumy <abaioumy@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/20 18:45:46 by abaioumy          #+#    #+#             */
-/*   Updated: 2022/03/05 16:31:34 by abaioumy         ###   ########.fr       */
+/*   Updated: 2022/03/13 14:05:18 by abaioumy         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,10 +37,10 @@ void	ft_send_char(char *str, int pid)
 	while (str[i])
 	{
 		ft_convert_to_binary(str[i], pid);
+		usleep(300);
 		i++;
 	}
-	ft_printf("String is sent successfully\n");
-	ft_convert_to_binary('\n', pid);
+	ft_printf("Message is sent successfully\n");
 }
 
 int	main(int ac, char **av)
@@ -49,7 +49,6 @@ int	main(int ac, char **av)
 
 	if (ac != 3)
 	{
-		ft_printf("wrong input!\n");
 		ft_printf("./client [PID] [STRING TO SEND]\n");
 		exit(0);
 	}

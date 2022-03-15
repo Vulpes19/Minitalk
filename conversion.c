@@ -6,7 +6,7 @@
 /*   By: abaioumy <abaioumy@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/20 21:14:16 by abaioumy          #+#    #+#             */
-/*   Updated: 2022/03/05 16:45:01 by abaioumy         ###   ########.fr       */
+/*   Updated: 2022/03/13 14:00:06 by abaioumy         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,14 +30,14 @@ int	ft_isdigit(int c)
 		return (0);
 }
 
-void	ft_convert_to_binary(char c, int pid)
+void	ft_convert_to_binary(unsigned char c, int pid)
 {
 	int		shift;
 
 	shift = 0;
 	while (shift < 8)
 	{
-		if (c & (0x80 >> shift))
+		if (c & (128 >> shift))
 		{
 			if (kill(pid, SIGUSR2) == -1)
 				exit(1);
@@ -48,7 +48,7 @@ void	ft_convert_to_binary(char c, int pid)
 				exit(1);
 		}
 		shift++;
-		usleep(100);
+		usleep(500);
 	}
 }
 
@@ -56,23 +56,15 @@ int	ft_atoi(char *str)
 {
 	int					i;
 	unsigned long long	result;
-	int					sign;
 
 	result = 0;
 	i = 0;
-	sign = 1;
 	while ((str[i] >= 9 && str[i] <= 13) || str[i] == 32)
 		i++;
-	if (str[i] == '-' || str[i] == '+')
-	{
-		if (str[i] == '-')
-			sign = -1;
-		i++;
-	}
 	while (str[i] && ft_isdigit(str[i]) == 1)
 	{
 		result = (result * 10) + str[i] - 48;
 		i++;
 	}
-	return (result * sign);
+	return (result);
 }
